@@ -9,6 +9,7 @@ import runDay8 from "./08";
 import runDay9 from "./09";
 import runDay10 from "./10";
 import runDay11 from "./11";
+import runDay12 from "./12";
 
 type DayMap = {
     [day: string]: (data: string[]) => number,
@@ -25,7 +26,8 @@ const dayMap: DayMap = {
     "08": runDay8,
     "09": runDay9,
     "10": runDay10,
-    "11": runDay11
+    "11": runDay11,
+    "12": runDay12
 }
 
 export default dayMap

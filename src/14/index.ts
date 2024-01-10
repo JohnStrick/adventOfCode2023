@@ -119,8 +119,9 @@ function part2(data: string[] = testData): number {
 
     for (let cycles = 0; cycles < 1000000000; cycles++) {
         const key = lastKey !== "" ? lastKey : getKey();
-        if (lookup[key] !== undefined) {
-            lastKey = lookup[key];
+        let value = lookup[key];
+        if (value !== undefined) {
+            lastKey = value;
             continue;
         }
         

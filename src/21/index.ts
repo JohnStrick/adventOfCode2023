@@ -113,7 +113,7 @@ function part2(data: string[] = testData, steps: number): number {
     const moves = [[ -1, 0], [1, 0], [0, -1], [0, 1]];
 
     const diamond = { oddSteps: 0, evenSteps: 0 };
-    const corners = { oddSteps: 0, evenSteps: 0 };
+    let cornerSteps = 0;
 
     while(queue.length > 0) {
         let item = queue.shift() as QueueItem;
@@ -130,7 +130,7 @@ function part2(data: string[] = testData, steps: number): number {
             if (item.distance <= start.x) {
                 item.distance % 2 === 0 ? diamond.evenSteps++ : diamond.oddSteps++;
             } else {
-                item.distance % 2 === 0 ? corners.evenSteps++ : corners.oddSteps++;
+                cornerSteps++;
             }
         }
 
@@ -153,7 +153,6 @@ function part2(data: string[] = testData, steps: number): number {
     //  With a diamond of radius=3, the entire shape grows by 12      -> area = 25
     //  With a diamond of radius=4, the entire shape grows by 16      -> area = 41
     //  Generally, the area can be expressed as: (r + 1)^2 + r^2
-    const multiplier = Math.pow(mapRepeats + 1, 2) + Math.pow(mapRepeats, 2);
 
     // Based on whether the steps & radius are odd or even, the perimeter will have either odd or even parity.
     // That's important because there will be more even or odd destinations. So the formulas are slightly different.
@@ -171,7 +170,7 @@ function part2(data: string[] = testData, steps: number): number {
     const diamondArea = steps % 2 & mapRepeats % 2 ? 
         Math.pow(mapRepeats + 1, 2) * diamond.evenSteps + Math.pow(mapRepeats, 2) * diamond.oddSteps :
         Math.pow(mapRepeats + 1, 2) * diamond.oddSteps  + Math.pow(mapRepeats, 2) * diamond.evenSteps;
-    const cornersArea = ((multiplier - 1) / 2) * (corners.oddSteps + corners.evenSteps);
+    const cornersArea = mapRepeats * (mapRepeats + 1) * cornerSteps;
 
     return diamondArea + cornersArea;
 }

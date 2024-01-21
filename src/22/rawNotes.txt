@@ -1,0 +1,32 @@
+Grid X/Z Perspective:
+.G. 9 ...
+.G. 8 ...
+... 7 ...
+FFF 6 .G.
+..E 5 .G. (G moves down 3)
+D.. 4 FFF
+CCC 3 D.E
+BBB 2 ???  (BBB & CCC)
+.A. 1 .A.
+--- 0 ---
+Grid Y/Z Perspective:
+.G. 9 ...
+.G. 8 ...
+... 7 ...
+.F. 6 .G.
+EEE 5 .G.
+DDD 4 .F. (F movs down 2)
+..C 3 ??? (D moves down 1, E moves down 2 )  (DDD & EEE)
+B.. 2 B.C (C moves down 1)
+AAA 1 AAA
+--- 0 ---
+
+A "Y" stable (at ground level)
+B "X" stable (resting on part of A)
+C "X" not stable, needs to move down 1 to z=2, rest on part of A
+D "Y" not stable, needs to move down 1 to z=3, rest on B/C
+E "Y" not stable, needs to move down 2 to z=3, rest on B/C
+F "X" not stable, needs to move down 2 to z=4, rests on D/E
+G "Z" not stable, needs to move down 3 to z=5, rests on F
+
+
